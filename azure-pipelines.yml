@@ -10,8 +10,6 @@ pool:
   vmImage: ubuntu-latest
 strategy:
   matrix:
-    Python27:
-      python.version: '2.7'
     Python37:
       python.version: '3.7'
 
@@ -30,8 +28,7 @@ steps:
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
-- task: PublishBuildArtifacts@1
+
+- task: CopyPublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'py'
-    publishLocation: 'Container'
+    ArtifactName: lol
